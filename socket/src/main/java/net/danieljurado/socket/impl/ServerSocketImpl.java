@@ -34,7 +34,8 @@ public class ServerSocketImpl implements ServerSocket {
 			.newCachedThreadPool(new ThreadFactory() {
 				@Override
 				public Thread newThread(Runnable r) {
-					Thread thread = new Thread(r, r.getClass().getSimpleName());
+					Thread thread = new Thread(r, "Socket-"
+							+ r.getClass().getSimpleName());
 					thread.setDaemon(true);
 					return thread;
 				}
@@ -74,6 +75,8 @@ public class ServerSocketImpl implements ServerSocket {
 					logger.info("Ready to accept connections...");
 					do {
 						java.net.Socket socket = server.accept();
+						logger.info("New connection from {}", socket
+								.getInetAddress().getHostAddress());
 						socketAccepter.queue.offer(socket);
 					} while (Thread.currentThread().isAlive());
 				} catch (SocketException e) {
