@@ -15,6 +15,7 @@ import net.danieljurado.socket.SocketProcessorFactory;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.slf4j.Logger;
@@ -98,7 +99,7 @@ class SocketImpl implements Socket, Runnable {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append(this.rawSocket)
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append(this.rawSocket)
 				.append(this.socketProcessor).toString();
 	}
 

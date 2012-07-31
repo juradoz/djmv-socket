@@ -3,6 +3,7 @@ package net.danieljurado.socket;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 public class ServerPort {
 	private final int port;
@@ -19,7 +20,7 @@ public class ServerPort {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("port", this.port).toString();
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("port", this.port).toString();
 	}
 
 	@Override
